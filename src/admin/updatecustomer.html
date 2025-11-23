@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="../assets/images/favicon.png"
+      type="image/x-icon"
+    />
+    <title>Update Customer - NWSDB Admin</title>
+  </head>
+  <body
+    class="font-inter bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen"
+  >
+    <!-- ============ MAIN LAYOUT CONTAINER ============ -->
+    <div class="flex h-screen">
+      <!-- ============ MOBILE OVERLAY ============ -->
+      <div
+        id="mobileOverlay"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"
+      ></div>
+
+      <!-- ============ SIDEBAR NAVIGATION (UNIQUE ADMIN DESIGN) ============ -->
+      <aside
+        id="sidebar"
+        class="fixed lg:relative inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 lg:flex lg:flex-col lg:w-80 bg-gradient-to-b from-slate-700 via-slate-700 to-slate-800 shadow-2xl w-80"
+      >
+        <!-- Logo Section - Sidebar Color Match -->
+        <div
+          class="bg-gradient-to-b from-slate-700 to-slate-800 p-6 border-b border-slate-600"
+        >
+          <div class="flex items-center justify-center gap-4">
+            <img
+              src="../../src/assets/images/logo/footer_logo.png"
+              alt="NWSDB footer logo"
+              class="h-12 w-auto"
+              onerror="this.style.display='none'"
+            />
+            <div class="flex flex-col justify-center">
+              <p class="text-lg font-bold uppercase tracking-widest text-white">
+                NWSDB
+              </p>
+              <p class="text-xs text-slate-300 font-medium">Admin Dashboard</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="px-3 py-6 space-y-2">
+          <!-- Dashboard Section -->
+          <div class="mb-4">
+            <p
+              class="text-xs font-bold text-slate-400 uppercase px-2 mb-2 tracking-wider"
+            >
+              Main
+            </p>
+            <ul class="space-y-1">
+              <li>
+                <a
+                  href="admindashbord.html"
+                  class="flex items-center px-4 py-3 text-slate-300 hover:text-white hover:bg-blue-600/30 rounded-lg transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-chart-line text-sm mr-3 text-blue-400 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Dashboard</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Management Section -->
+          <div class="mb-4">
+            <p
+              class="text-xs font-bold text-slate-400 uppercase px-2 mb-2 tracking-wider"
+            >
+              Management
+            </p>
+            <ul class="space-y-1">
+              <li>
+                <a
+                  href="addcustomer.html"
+                  class="flex items-center px-4 py-2.5 text-slate-300 hover:text-white hover:bg-cyan-600/30 rounded-lg transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-user-plus text-sm mr-3 text-cyan-400 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Add New Customer</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="managecustomers.html"
+                  class="flex items-center px-4 py-2.5 text-slate-300 hover:text-white hover:bg-blue-600/30 rounded-lg transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-users text-sm mr-3 text-blue-400 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Manage Customers</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="manageusers.html"
+                  class="flex items-center px-4 py-2.5 text-slate-300 hover:text-white hover:bg-green-600/30 rounded-lg transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-user-shield text-sm mr-3 text-green-400 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Manage Users</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Configuration Section -->
+          <div class="mb-4">
+            <p
+              class="text-xs font-bold text-slate-400 uppercase px-2 mb-2 tracking-wider"
+            >
+              Configuration
+            </p>
+            <ul class="space-y-1">
+              <li>
+                <a
+                  href="addregion.html"
+                  class="flex items-center px-4 py-2.5 text-slate-300 hover:text-white hover:bg-purple-600/30 rounded-lg transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-map-marker-alt text-sm mr-3 text-purple-400 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Add Region</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="addarea.html"
+                  class="flex items-center px-4 py-2.5 text-slate-300 hover:text-white hover:bg-purple-600/30 rounded-lg transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-map text-sm mr-3 text-purple-400 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Add Area</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="addwss.html"
+                  class="flex items-center px-4 py-2.5 text-slate-300 hover:text-white hover:bg-purple-600/30 rounded-lg transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-network-wired text-sm mr-3 text-purple-400 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Add WSS</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Logout Section -->
+        <div class="px-3 py-4 border-t border-slate-600 mt-auto">
+          <button
+            onclick="handleLogout()"
+            class="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-lg font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-red-600/30 group"
+          >
+            <i
+              class="fas fa-sign-out-alt text-sm mr-2 group-hover:scale-110 transition-transform"
+            ></i>
+            <span>Logout</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- ============ MOBILE NAVIGATION TOGGLE ============ -->
+      <div class="lg:hidden fixed top-4 left-4 z-50">
+        <button
+          id="mobileMenuToggle"
+          class="bg-amber-600 hover:bg-amber-700 text-white p-3 rounded-xl shadow-lg transition-all duration-300 hover:scale-105"
+        >
+          <i class="fas fa-bars text-lg"></i>
+        </button>
+      </div>
+
+      <!-- ============ MAIN CONTENT AREA ============ -->
+      <main
+        class="flex-1 overflow-y-auto bg-gradient-to-br from-slate-50 to-slate-100"
+      >
+        <!-- Content Wrapper with Proper Spacing -->
+        <div class="p-6 lg:p-8 max-w-6xl">
+          <!-- ============ PAGE HEADER ============ -->
+          <div class="mb-8">
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg flex items-center justify-center shadow-lg"
+              >
+                <i class="fas fa-edit text-white text-xl"></i>
+              </div>
+              <div>
+                <h1 class="text-3xl lg:text-4xl font-bold text-slate-900">
+                  Update Customer
+                </h1>
+                <p class="text-slate-600 text-sm">
+                  Modify customer details and document
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ FORM SECTION ============ -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Main Form Card -->
+            <div
+              class="lg:col-span-2 bg-white rounded-xl p-6 lg:p-8 shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300"
+            >
+              <form id="updateCustomerForm" class="space-y-6">
+                <!-- Hidden Customer ID -->
+                <input
+                  type="hidden"
+                  id="customerId"
+                  name="customerId"
+                  value=""
+                />
+
+                <!-- Region Field -->
+                <div>
+                  <label
+                    for="region"
+                    class="block text-sm font-semibold text-slate-900 mb-2"
+                  >
+                    <i class="fas fa-map-marker-alt text-amber-600 mr-2"></i
+                    >Region
+                    <span class="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="region"
+                    name="region"
+                    required
+                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-white text-slate-900"
+                  >
+                    <option value="">-- Select Region --</option>
+                    <option value="41-Bandarawela">41-Bandarawela</option>
+                  </select>
+                </div>
+
+                <!-- Area Field -->
+                <div>
+                  <label
+                    for="area"
+                    class="block text-sm font-semibold text-slate-900 mb-2"
+                  >
+                    <i class="fas fa-map text-amber-600 mr-2"></i>Area
+                    <span class="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="area"
+                    name="area"
+                    required
+                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-white text-slate-900"
+                  >
+                    <option value="">-- Select Area --</option>
+                    <option value="02-Bandarawela">02-Bandarawela</option>
+                    <option value="03-Badulla">03-Badulla</option>
+                  </select>
+                </div>
+
+                <!-- WSS Field -->
+                <div>
+                  <label
+                    for="wss"
+                    class="block text-sm font-semibold text-slate-900 mb-2"
+                  >
+                    <i class="fas fa-network-wired text-amber-600 mr-2"></i>WSS
+                    <span class="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="wss"
+                    name="wss"
+                    required
+                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 bg-white text-slate-900"
+                  >
+                    <option value="">-- Select WSS --</option>
+                    <option value="65-Ettampitiya">65-Ettampitiya</option>
+                    <option value="17-Keppetipola">17-Keppetipola</option>
+                    <option value="04-Bogahakumbura">04-Bogahakumbura</option>
+                  </select>
+                </div>
+
+                <!-- Customer ID Field (Display Only) -->
+                <div>
+                  <label
+                    for="customerIdDisplay"
+                    class="block text-sm font-semibold text-slate-900 mb-2"
+                  >
+                    <i class="fas fa-id-card text-amber-600 mr-2"></i>Customer
+                    ID
+                    <span class="text-slate-400">(Read Only)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="customerIdDisplay"
+                    class="w-full px-4 py-3 border border-slate-300 rounded-lg bg-slate-50 text-slate-900 cursor-not-allowed"
+                    readonly
+                    placeholder="Customer ID"
+                  />
+                </div>
+
+                <!-- Customer Name Field -->
+                <div>
+                  <label
+                    for="customerName"
+                    class="block text-sm font-semibold text-slate-900 mb-2"
+                  >
+                    <i class="fas fa-user text-amber-600 mr-2"></i>Customer Name
+                    <span class="text-slate-400">(Optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="customerName"
+                    name="customerName"
+                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 text-slate-900"
+                    placeholder="Enter customer name"
+                  />
+                </div>
+
+                <!-- PDF File Upload -->
+                <div>
+                  <label
+                    for="pdfFile"
+                    class="block text-sm font-semibold text-slate-900 mb-2"
+                  >
+                    <i class="fas fa-file-pdf text-amber-600 mr-2"></i>PDF File
+                    <span class="text-red-500">*</span>
+                  </label>
+                  <div class="relative">
+                    <input
+                      type="file"
+                      id="pdfFile"
+                      name="pdfFile"
+                      accept=".pdf"
+                      class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-600 hover:file:bg-amber-100"
+                    />
+                  </div>
+                  <p class="text-xs text-slate-500 mt-2">
+                    <i class="fas fa-info-circle mr-1"></i>Current PDF:
+                    <span id="currentPDF" class="font-semibold"
+                      >customer_document.pdf</span
+                    >
+                  </p>
+                </div>
+
+                <!-- Form Buttons -->
+                <div
+                  class="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200"
+                >
+                  <button
+                    type="submit"
+                    class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-amber-600 to-amber-700 text-white font-semibold rounded-lg hover:from-amber-700 hover:to-amber-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  >
+                    <i class="fas fa-sync-alt mr-2"></i>Update Customer
+                  </button>
+                  <button
+                    type="button"
+                    onclick="goBack()"
+                    class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-slate-400 to-slate-500 text-white font-semibold rounded-lg hover:from-slate-500 hover:to-slate-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  >
+                    <i class="fas fa-arrow-left mr-2"></i>Go Back
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Info Card -->
+            <div
+              class="bg-white rounded-xl p-6 shadow-lg border border-slate-100 h-fit hover:shadow-xl transition-all duration-300"
+            >
+              <h3 class="text-lg font-bold text-slate-900 mb-4">
+                <i class="fas fa-lightbulb text-amber-500 mr-2"></i>Instructions
+              </h3>
+              <div class="space-y-4 text-sm text-slate-600">
+                <div class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check-circle text-green-500 mt-0.5 flex-shrink-0"
+                  ></i>
+                  <p>Review and modify customer details as needed</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check-circle text-green-500 mt-0.5 flex-shrink-0"
+                  ></i>
+                  <p>Customer ID cannot be changed (Read Only)</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check-circle text-green-500 mt-0.5 flex-shrink-0"
+                  ></i>
+                  <p>Select the appropriate region and area</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check-circle text-green-500 mt-0.5 flex-shrink-0"
+                  ></i>
+                  <p>Choose the correct Water Supply Scheme</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check-circle text-green-500 mt-0.5 flex-shrink-0"
+                  ></i>
+                  <p>Upload PDF file with updated customer details</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check-circle text-green-500 mt-0.5 flex-shrink-0"
+                  ></i>
+                  <p>Click Update Customer to save changes</p>
+                </div>
+              </div>
+
+              <!-- Support Section -->
+              <div class="mt-6 pt-6 border-t border-slate-200">
+                <p class="text-xs text-slate-500 mb-2 font-semibold">
+                  <i class="fas fa-headset mr-2"></i>Need help?
+                </p>
+                <p class="text-xs text-slate-600">
+                  Contact your administrator for support
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ============ JAVASCRIPT SECTION ============ -->
+    <script>
+      // ============ LOAD CUSTOMER DATA ============
+      function loadCustomerData() {
+        // Get customer ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const customerId = urlParams.get('id');
+
+        if (customerId) {
+          document.getElementById('customerId').value = customerId;
+          document.getElementById('customerIdDisplay').value = customerId;
+
+          // TODO: Fetch customer data from PHP backend
+          // This is where PHP backend will load existing customer details
+          console.log('Loading customer data for ID:', customerId);
+        }
+      }
+
+      // ============ GO BACK FUNCTION ============
+      function goBack() {
+        window.location.href = 'managecustomers.html';
+      }
+
+      // ============ LOGOUT FUNCTION ============
+      function handleLogout() {
+        if (confirm('Are you sure you want to logout?')) {
+          localStorage.removeItem('userData');
+          sessionStorage.clear();
+          window.location.href = '../Auth/login.html';
+        }
+      }
+
+      // ============ MOBILE MENU TOGGLE ============
+      function toggleMobileMenu() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('mobileOverlay');
+        const isOpen = sidebar.classList.contains('translate-x-0');
+
+        if (isOpen) {
+          sidebar.classList.remove('translate-x-0');
+          sidebar.classList.add('-translate-x-full');
+          overlay.classList.add('hidden');
+          document.body.style.overflow = '';
+        } else {
+          sidebar.classList.remove('-translate-x-full');
+          sidebar.classList.add('translate-x-0');
+          overlay.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      // ============ EVENT LISTENERS ============
+      document
+        .getElementById('mobileMenuToggle')
+        ?.addEventListener('click', toggleMobileMenu);
+      document
+        .getElementById('mobileOverlay')
+        ?.addEventListener('click', toggleMobileMenu);
+
+      document.querySelectorAll('#sidebar a').forEach((link) => {
+        link.addEventListener('click', function () {
+          if (window.innerWidth < 1024) {
+            toggleMobileMenu();
+          }
+        });
+      });
+
+      // ============ FORM SUBMISSION (Ready for PHP Backend) ============
+      document
+        .getElementById('updateCustomerForm')
+        ?.addEventListener('submit', function (e) {
+          e.preventDefault();
+          // Form will be processed by PHP backend
+          // Data will be sent to server via form submission
+          console.log(
+            'Update form submitted - ready for PHP backend processing'
+          );
+        });
+
+      // ============ LOAD DATA ON PAGE LOAD ============
+      window.addEventListener('DOMContentLoaded', function () {
+        loadCustomerData();
+      });
+    </script>
+  </body>
+</html>

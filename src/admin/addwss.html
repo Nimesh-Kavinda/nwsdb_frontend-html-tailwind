@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="../assets/images/favicon.png"
+      type="image/x-icon"
+    />
+    <title>Add WSS - NWSDB Admin</title>
+  </head>
+  <body
+    class="font-inter bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen"
+  >
+    <!-- ============ MAIN LAYOUT CONTAINER ============ -->
+    <div class="flex h-screen">
+      <!-- ============ MOBILE OVERLAY ============ -->
+      <div
+        id="mobileOverlay"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"
+      ></div>
+
+      <!-- ============ SIDEBAR NAVIGATION (UNIQUE ADMIN DESIGN) ============ -->
+      <aside
+        id="sidebar"
+        class="fixed lg:relative inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 lg:flex lg:flex-col lg:w-80 bg-gradient-to-b from-slate-700 via-slate-700 to-slate-800 shadow-2xl w-80"
+      >
+        <!-- Logo Section - Sidebar Color Match -->
+        <div
+          class="bg-gradient-to-b from-slate-700 to-slate-800 p-6 border-b border-slate-600"
+        >
+          <div class="flex items-center justify-center gap-4">
+            <img
+              src="../../src/assets/images/logo/footer_logo.png"
+              alt="NWSDB footer logo"
+              class="h-12 w-auto"
+              onerror="this.style.display='none'"
+            />
+            <div class="flex flex-col justify-center">
+              <p class="text-lg font-bold uppercase tracking-widest text-white">
+                NWSDB
+              </p>
+              <p class="text-xs text-slate-300 font-medium">Admin Dashboard</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="px-3 py-6 space-y-2">
+          <!-- Dashboard Section -->
+          <div class="mb-4">
+            <p
+              class="text-xs font-bold text-slate-400 uppercase px-2 mb-2 tracking-wider"
+            >
+              Main
+            </p>
+            <ul class="space-y-1">
+              <li>
+                <a
+                  href="admindashbord.html"
+                  class="flex items-center px-4 py-3 text-slate-300 hover:text-white hover:bg-blue-600/30 rounded-lg transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-chart-line text-sm mr-3 text-blue-400 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Dashboard</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Management Section -->
+          <div class="mb-4">
+            <p
+              class="text-xs font-bold text-slate-400 uppercase px-2 mb-2 tracking-wider"
+            >
+              Management
+            </p>
+            <ul class="space-y-1">
+              <li>
+                <a
+                  href="addcustomer.html"
+                  class="flex items-center px-4 py-2.5 text-slate-300 hover:text-white hover:bg-cyan-600/30 rounded-lg transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-user-plus text-sm mr-3 text-cyan-400 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Add New Customer</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="managecustomers.html"
+                  class="flex items-center px-4 py-2.5 text-slate-300 hover:text-white hover:bg-blue-600/30 rounded-lg transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-users text-sm mr-3 text-blue-400 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Manage Customers</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="manageusers.html"
+                  class="flex items-center px-4 py-2.5 text-slate-300 hover:text-white hover:bg-green-600/30 rounded-lg transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-user-shield text-sm mr-3 text-green-400 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Manage Users</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Configuration Section -->
+          <div class="mb-4">
+            <p
+              class="text-xs font-bold text-slate-400 uppercase px-2 mb-2 tracking-wider"
+            >
+              Configuration
+            </p>
+            <ul class="space-y-1">
+              <li>
+                <a
+                  href="addregion.html"
+                  class="flex items-center px-4 py-2.5 text-slate-300 hover:text-white hover:bg-purple-600/30 rounded-lg transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-map-marker-alt text-sm mr-3 text-purple-400 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Add Region</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="addarea.html"
+                  class="flex items-center px-4 py-2.5 text-slate-300 hover:text-white hover:bg-purple-600/30 rounded-lg transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-map text-sm mr-3 text-purple-400 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Add Area</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="addwss.html"
+                  class="flex items-center px-4 py-3 text-white bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg shadow-lg hover:shadow-purple-500/30 transition-all duration-300 group"
+                >
+                  <i
+                    class="fas fa-network-wired text-sm mr-3 group-hover:scale-110 transition-transform"
+                  ></i>
+                  <span class="font-medium text-sm">Add WSS</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Logout Section -->
+        <div class="px-3 py-4 border-t border-slate-600 mt-auto">
+          <button
+            onclick="handleLogout()"
+            class="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-lg font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-red-600/30 group"
+          >
+            <i
+              class="fas fa-sign-out-alt text-sm mr-2 group-hover:scale-110 transition-transform"
+            ></i>
+            <span>Logout</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- ============ MOBILE NAVIGATION TOGGLE ============ -->
+      <div class="lg:hidden fixed top-4 left-4 z-50">
+        <button
+          id="mobileMenuToggle"
+          class="bg-purple-600 hover:bg-purple-700 text-white p-3 rounded-xl shadow-lg transition-all duration-300 hover:scale-105"
+        >
+          <i class="fas fa-bars text-lg"></i>
+        </button>
+      </div>
+
+      <!-- ============ MAIN CONTENT AREA ============ -->
+      <main
+        class="flex-1 overflow-y-auto bg-gradient-to-br from-slate-50 to-slate-100"
+      >
+        <!-- Content Wrapper with Proper Spacing -->
+        <div class="p-6 lg:p-8 max-w-6xl">
+          <!-- ============ PAGE HEADER ============ -->
+          <div class="mb-8">
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center shadow-lg"
+              >
+                <i class="fas fa-network-wired text-white text-xl"></i>
+              </div>
+              <div>
+                <h1 class="text-3xl lg:text-4xl font-bold text-slate-900">
+                  Add Water Supply System
+                </h1>
+                <p class="text-slate-600 text-sm">
+                  Create and manage water supply systems (WSS)
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ FORM SECTION ============ -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Main Form Card -->
+            <div
+              class="lg:col-span-2 bg-white rounded-xl p-6 lg:p-8 shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-300"
+            >
+              <form id="addWSSForm" class="space-y-6">
+                <!-- Area Selection Field -->
+                <div>
+                  <label
+                    for="area"
+                    class="block text-sm font-semibold text-slate-900 mb-2"
+                  >
+                    <i class="fas fa-map text-purple-600 mr-2"></i>Area
+                    <span class="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="area"
+                    name="area"
+                    required
+                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 bg-white text-slate-900"
+                  >
+                    <option value="">-- Select Area --</option>
+                    <option value="02-Bandarawela">02-Bandarawela</option>
+                    <option value="01-Colombo Central">
+                      01-Colombo Central
+                    </option>
+                    <option value="07-Kandy City">07-Kandy City</option>
+                  </select>
+                </div>
+
+                <!-- WSS Name Field -->
+                <div>
+                  <label
+                    for="wssName"
+                    class="block text-sm font-semibold text-slate-900 mb-2"
+                  >
+                    <i class="fas fa-network-wired text-purple-600 mr-2"></i>WSS
+                    Name
+                    <span class="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="wssName"
+                    name="wssName"
+                    required
+                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-slate-900"
+                    placeholder="e.g., Ettampitiya WSS, Keppetipola WSS"
+                  />
+                  <p class="text-xs text-slate-500 mt-2">
+                    <i class="fas fa-info-circle mr-1"></i>Enter the unique WSS
+                    name
+                  </p>
+                </div>
+
+                <!-- WSS Code Field (Optional) -->
+                <div>
+                  <label
+                    for="wssCode"
+                    class="block text-sm font-semibold text-slate-900 mb-2"
+                  >
+                    <i class="fas fa-barcode text-purple-600 mr-2"></i>WSS Code
+                    <span class="text-slate-400">(Optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="wssCode"
+                    name="wssCode"
+                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 text-slate-900"
+                    placeholder="e.g., WSS65, WSS17"
+                  />
+                  <p class="text-xs text-slate-500 mt-2">
+                    <i class="fas fa-info-circle mr-1"></i>Enter a code to
+                    identify the WSS
+                  </p>
+                </div>
+
+                <!-- Form Buttons -->
+                <div
+                  class="grid grid-cols-2 gap-4 pt-6 border-t border-slate-200"
+                >
+                  <button
+                    type="submit"
+                    class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  >
+                    <i class="fas fa-save mr-2"></i>Save WSS
+                  </button>
+                  <button
+                    type="button"
+                    onclick="clearForm()"
+                    class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-slate-400 to-slate-500 text-white font-semibold rounded-lg hover:from-slate-500 hover:to-slate-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  >
+                    <i class="fas fa-redo mr-2"></i>Clear Form
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Info Card -->
+            <div
+              class="bg-white rounded-xl p-6 shadow-lg border border-slate-100 h-fit hover:shadow-xl transition-all duration-300"
+            >
+              <h3 class="text-lg font-bold text-slate-900 mb-4">
+                <i class="fas fa-lightbulb text-amber-500 mr-2"></i>Instructions
+              </h3>
+              <div class="space-y-4 text-sm text-slate-600">
+                <div class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check-circle text-green-500 mt-0.5 flex-shrink-0"
+                  ></i>
+                  <p>Select the area first</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check-circle text-green-500 mt-0.5 flex-shrink-0"
+                  ></i>
+                  <p>WSS Name is required for identification</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check-circle text-green-500 mt-0.5 flex-shrink-0"
+                  ></i>
+                  <p>Use unique WSS names to avoid duplicates</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check-circle text-green-500 mt-0.5 flex-shrink-0"
+                  ></i>
+                  <p>WSS Code helps with data organization</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i
+                    class="fas fa-check-circle text-green-500 mt-0.5 flex-shrink-0"
+                  ></i>
+                  <p>Click Save WSS to submit the form</p>
+                </div>
+              </div>
+
+              <!-- Support Section -->
+              <div class="mt-6 pt-6 border-t border-slate-200">
+                <p class="text-xs text-slate-500 mb-2 font-semibold">
+                  <i class="fas fa-headset mr-2"></i>Need help?
+                </p>
+                <p class="text-xs text-slate-600">
+                  Contact your administrator for support
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ WSS LIST SECTION ============ -->
+          <div class="mt-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">
+              <i class="fas fa-list text-purple-600 mr-2"></i>All Water Supply
+              Systems
+            </h2>
+
+            <!-- WSS List Container -->
+            <div
+              class="bg-white rounded-xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300"
+            >
+              <!-- Table Header (Desktop) -->
+              <div
+                class="hidden sm:grid grid-cols-4 gap-4 p-6 bg-gradient-to-r from-purple-50 to-slate-50 border-b border-slate-200"
+              >
+                <div class="font-bold text-slate-900">
+                  <i class="fas fa-map text-purple-600 mr-2"></i>Area
+                </div>
+                <div class="font-bold text-slate-900">
+                  <i class="fas fa-network-wired text-purple-600 mr-2"></i>WSS
+                  Name
+                </div>
+                <div class="font-bold text-slate-900">
+                  <i class="fas fa-barcode text-purple-600 mr-2"></i>WSS Code
+                </div>
+                <div class="text-right font-bold text-slate-900">
+                  <i class="fas fa-cogs text-purple-600 mr-2"></i>Actions
+                </div>
+              </div>
+
+              <!-- Sample WSS Cards -->
+              <div id="wssListContainer" class="divide-y divide-slate-100">
+                <!-- WSS Card 1 -->
+                <div
+                  class="p-4 sm:p-6 hover:bg-slate-50 transition-all duration-300"
+                >
+                  <div
+                    class="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:items-center"
+                  >
+                    <div>
+                      <p
+                        class="text-xs sm:hidden font-bold text-slate-500 uppercase mb-1"
+                      >
+                        Area
+                      </p>
+                      <p class="font-semibold text-slate-900">
+                        Bandarawela Town
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        class="text-xs sm:hidden font-bold text-slate-500 uppercase mb-1"
+                      >
+                        WSS Name
+                      </p>
+                      <p class="font-bold text-slate-900">Ettampitiya WSS</p>
+                    </div>
+                    <div>
+                      <p
+                        class="text-xs sm:hidden font-bold text-slate-500 uppercase mb-1"
+                      >
+                        WSS Code
+                      </p>
+                      <p class="font-semibold text-slate-900">WSS65</p>
+                    </div>
+                    <div class="flex gap-2 sm:justify-end">
+                      <button
+                        onclick="deleteWSS('Ettampitiya WSS')"
+                        class="flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-md text-sm flex-1 sm:flex-none"
+                        title="Delete WSS"
+                      >
+                        <i class="fas fa-trash"></i>
+                        <span>Delete</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- WSS Card 2 -->
+                <div
+                  class="p-4 sm:p-6 hover:bg-slate-50 transition-all duration-300"
+                >
+                  <div
+                    class="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:items-center"
+                  >
+                    <div>
+                      <p
+                        class="text-xs sm:hidden font-bold text-slate-500 uppercase mb-1"
+                      >
+                        Area
+                      </p>
+                      <p class="font-semibold text-slate-900">
+                        Colombo Central
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        class="text-xs sm:hidden font-bold text-slate-500 uppercase mb-1"
+                      >
+                        WSS Name
+                      </p>
+                      <p class="font-bold text-slate-900">Keppetipola WSS</p>
+                    </div>
+                    <div>
+                      <p
+                        class="text-xs sm:hidden font-bold text-slate-500 uppercase mb-1"
+                      >
+                        WSS Code
+                      </p>
+                      <p class="font-semibold text-slate-900">WSS17</p>
+                    </div>
+                    <div class="flex gap-2 sm:justify-end">
+                      <button
+                        onclick="deleteWSS('Keppetipola WSS')"
+                        class="flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-md text-sm flex-1 sm:flex-none"
+                        title="Delete WSS"
+                      >
+                        <i class="fas fa-trash"></i>
+                        <span>Delete</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- WSS Card 3 -->
+                <div
+                  class="p-4 sm:p-6 hover:bg-slate-50 transition-all duration-300"
+                >
+                  <div
+                    class="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:items-center"
+                  >
+                    <div>
+                      <p
+                        class="text-xs sm:hidden font-bold text-slate-500 uppercase mb-1"
+                      >
+                        Area
+                      </p>
+                      <p class="font-semibold text-slate-900">Kandy City</p>
+                    </div>
+                    <div>
+                      <p
+                        class="text-xs sm:hidden font-bold text-slate-500 uppercase mb-1"
+                      >
+                        WSS Name
+                      </p>
+                      <p class="font-bold text-slate-900">Bogahakumbura WSS</p>
+                    </div>
+                    <div>
+                      <p
+                        class="text-xs sm:hidden font-bold text-slate-500 uppercase mb-1"
+                      >
+                        WSS Code
+                      </p>
+                      <p class="font-semibold text-slate-900">WSS04</p>
+                    </div>
+                    <div class="flex gap-2 sm:justify-end">
+                      <button
+                        onclick="deleteWSS('Bogahakumbura WSS')"
+                        class="flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-md text-sm flex-1 sm:flex-none"
+                        title="Delete WSS"
+                      >
+                        <i class="fas fa-trash"></i>
+                        <span>Delete</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Empty State -->
+              <div id="emptyState" class="text-center py-12 hidden">
+                <i class="fas fa-inbox text-slate-400 text-5xl mb-4 block"></i>
+                <p class="text-slate-600 text-lg">
+                  No water supply systems found. Create one to get started.
+                </p>
+              </div>
+
+              <!-- Summary Section -->
+              <div class="p-6 border-t border-slate-100 bg-slate-50">
+                <div class="text-sm text-slate-600">
+                  Total WSS:
+                  <span id="totalWSS" class="font-semibold text-slate-900"
+                    >3</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ============ JAVASCRIPT SECTION ============ -->
+    <script>
+      // ============ CLEAR FORM FUNCTION ============
+      function clearForm() {
+        document.getElementById('addWSSForm').reset();
+      }
+
+      // ============ DELETE WSS ============
+      function deleteWSS(wssName) {
+        if (
+          confirm(
+            `Are you sure you want to delete the WSS "${wssName}"? This action cannot be undone.`
+          )
+        ) {
+          console.log('Deleting WSS:', wssName);
+          // Ready for PHP backend to handle WSS deletion
+        }
+      }
+
+      // ============ LOGOUT FUNCTION ============
+      function handleLogout() {
+        if (confirm('Are you sure you want to logout?')) {
+          localStorage.removeItem('userData');
+          sessionStorage.clear();
+          window.location.href = '../Auth/login.html';
+        }
+      }
+
+      // ============ MOBILE MENU TOGGLE ============
+      function toggleMobileMenu() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('mobileOverlay');
+        const isOpen = sidebar.classList.contains('translate-x-0');
+
+        if (isOpen) {
+          sidebar.classList.remove('translate-x-0');
+          sidebar.classList.add('-translate-x-full');
+          overlay.classList.add('hidden');
+          document.body.style.overflow = '';
+        } else {
+          sidebar.classList.remove('-translate-x-full');
+          sidebar.classList.add('translate-x-0');
+          overlay.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      // ============ EVENT LISTENERS ============
+      document
+        .getElementById('mobileMenuToggle')
+        ?.addEventListener('click', toggleMobileMenu);
+      document
+        .getElementById('mobileOverlay')
+        ?.addEventListener('click', toggleMobileMenu);
+
+      document.querySelectorAll('#sidebar a').forEach((link) => {
+        link.addEventListener('click', function () {
+          if (window.innerWidth < 1024) {
+            toggleMobileMenu();
+          }
+        });
+      });
+
+      // ============ FORM SUBMISSION (Ready for PHP Backend) ============
+      document
+        .getElementById('addWSSForm')
+        ?.addEventListener('submit', function (e) {
+          e.preventDefault();
+          // Form will be processed by PHP backend
+          // Data will be sent to server via form submission
+          console.log('Form submitted - ready for PHP backend processing');
+        });
+    </script>
+  </body>
+</html>

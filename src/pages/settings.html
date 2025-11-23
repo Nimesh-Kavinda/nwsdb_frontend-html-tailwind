@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="../assets/images/favicon.png"
+      type="image/x-icon"
+    />
+    <title>Settings - NWSDB Bandarawela</title>
+  </head>
+  <body
+    class="font-inter bg-gradient-to-br from-slate-50 to-slate-200 min-h-screen"
+  >
+    <!-- ============ MAIN LAYOUT CONTAINER ============ -->
+    <div class="flex h-screen">
+      <!-- ============ MOBILE OVERLAY ============ -->
+      <div
+        id="mobileOverlay"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"
+      ></div>
+
+      <!-- ============ SIDEBAR NAVIGATION ============ -->
+      <aside
+        id="sidebar"
+        class="fixed lg:relative inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-50 lg:flex lg:flex-col lg:w-80 bg-gradient-to-b from-blue-600 via-blue-700 to-blue-800 shadow-2xl w-80"
+      >
+        <!-- Logo Section -->
+        <div class="bg-white p-6 border-b border-gray-200 mb-4">
+          <div class="flex items-center justify-center">
+            <img
+              src="../../src/assets/images/logo/logo.png"
+              alt="NWSDB logo"
+              class="h-14 w-auto"
+              onerror="this.style.display='none'"
+            />
+          </div>
+        </div>
+
+        <!-- User Profile Section -->
+        <div
+          class="p-3 py-5 mx-3 bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl"
+        >
+          <div class="flex items-center">
+            <div
+              class="w-9 h-9 bg-white rounded-full flex items-center justify-center mr-3"
+            >
+              <i class="fas fa-user text-blue-600 text-sm"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-white text-xs font-semibold truncate">
+                Demo User
+              </h3>
+              <p class="text-blue-200 text-xs">Staff Member</p>
+            </div>
+            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+          </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="px-3 py-4">
+          <ul class="space-y-1">
+            <li>
+              <a
+                href="dashbord.html"
+                class="flex items-center px-3 py-5 text-blue-200 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300"
+              >
+                <i class="fas fa-home text-sm mr-3"></i>
+                <span class="font-medium text-sm">Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="upload.html"
+                class="flex items-center px-3 py-5 text-blue-200 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300"
+              >
+                <i class="fas fa-cloud-upload-alt text-sm mr-3"></i>
+                <span class="font-medium text-sm">Upload New Customer</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="customers.html"
+                class="flex items-center px-3 py-5 text-blue-200 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300"
+              >
+                <i class="fas fa-users text-sm mr-3"></i>
+                <span class="font-medium text-sm">Customer List</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="settings.html"
+                class="flex items-center px-3 py-5 text-white bg-white/10 rounded-lg border border-white/20 shadow-lg"
+              >
+                <i class="fas fa-cog text-sm mr-3"></i>
+                <span class="font-medium text-sm">Settings</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Logout Section -->
+        <div class="mt-auto p-3">
+          <button
+            onclick="handleLogout()"
+            class="w-full flex items-center px-3 py-5 bg-red-500/30 hover:bg-red-500/30 border border-red-400/30 text-red-200 hover:text-red-100 rounded-lg transition-all duration-300"
+          >
+            <i class="fas fa-sign-out-alt text-sm mr-3"></i>
+            <span class="font-medium text-sm">Logout</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- ============ MOBILE NAVIGATION TOGGLE ============ -->
+      <div class="lg:hidden fixed top-4 left-4 z-50">
+        <button
+          id="mobileMenuToggle"
+          class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-xl shadow-lg transition-all duration-300 hover:scale-105"
+        >
+          <i class="fas fa-bars text-lg"></i>
+        </button>
+      </div>
+
+      <!-- ============ MAIN CONTENT AREA ============ -->
+      <main class="flex-1 overflow-hidden">
+        <div class="h-full overflow-y-auto">
+          <div class="p-4 sm:p-6 lg:p-8">
+            <!-- ============ PAGE HEADER SECTION ============ -->
+            <div class="mb-8">
+              <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+                <i class="fas fa-cog text-blue-600 mr-3"></i>Settings
+              </h1>
+              <p class="text-gray-600 text-sm sm:text-base">
+                Manage your account settings and personal information
+              </p>
+            </div>
+
+            <!-- ============ USER DETAILS AND UPDATE SECTIONS ============ -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+              <!-- User Details Card -->
+              <div
+                class="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100"
+              >
+                <h2 class="text-lg font-bold text-gray-900 mb-6">
+                  <i class="fas fa-user-circle text-blue-600 mr-2"></i>Your
+                  Profile
+                </h2>
+
+                <!-- User Details Section -->
+                <div class="space-y-5">
+                  <!-- Full Name -->
+                  <div class="pb-5 border-b border-gray-200">
+                    <p
+                      class="text-xs font-semibold text-gray-500 uppercase mb-1"
+                    >
+                      Full Name
+                    </p>
+                    <p id="displayName" class="text-lg font-bold text-gray-900">
+                      Demo User
+                    </p>
+                  </div>
+
+                  <!-- Email -->
+                  <div class="pb-5 border-b border-gray-200">
+                    <p
+                      class="text-xs font-semibold text-gray-500 uppercase mb-1"
+                    >
+                      Email Address
+                    </p>
+                    <p id="displayEmail" class="text-base text-gray-700">
+                      demo@nwsdb.lk
+                    </p>
+                  </div>
+
+                  <!-- Username -->
+                  <div class="pb-5 border-b border-gray-200">
+                    <p
+                      class="text-xs font-semibold text-gray-500 uppercase mb-1"
+                    >
+                      Username
+                    </p>
+                    <p id="displayUsername" class="text-base text-gray-700">
+                      demo_user
+                    </p>
+                  </div>
+
+                  <!-- Staff ID -->
+                  <div class="pb-5 border-b border-gray-200">
+                    <p
+                      class="text-xs font-semibold text-gray-500 uppercase mb-1"
+                    >
+                      Staff ID
+                    </p>
+                    <p id="displayStaffId" class="text-base text-gray-700">
+                      STF001
+                    </p>
+                  </div>
+
+                  <!-- NIC -->
+                  <div class="pb-5 border-b border-gray-200">
+                    <p
+                      class="text-xs font-semibold text-gray-500 uppercase mb-1"
+                    >
+                      National ID
+                    </p>
+                    <p id="displayNic" class="text-base text-gray-700">
+                      123456789V
+                    </p>
+                  </div>
+
+                  <!-- Phone -->
+                  <div>
+                    <p
+                      class="text-xs font-semibold text-gray-500 uppercase mb-1"
+                    >
+                      Phone Number
+                    </p>
+                    <p id="displayPhone" class="text-base text-gray-700">
+                      +94 71 234 5678
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Update Settings Form -->
+              <div
+                class="lg:col-span-2 bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100"
+              >
+                <h2 class="text-lg font-bold text-gray-900 mb-6">
+                  <i class="fas fa-edit text-blue-600 mr-2"></i>Update
+                  Information
+                </h2>
+
+                <!-- Update Form -->
+                <form id="settingsForm" class="space-y-6">
+                  <!-- Full Name (Editable) -->
+                  <div>
+                    <label
+                      for="fullName"
+                      class="block text-sm font-semibold text-gray-900 mb-2"
+                    >
+                      <i class="fas fa-user text-blue-600 mr-2"></i>Full Name
+                      <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      required
+                      class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                      placeholder="Enter your full name"
+                      value="Demo User"
+                    />
+                  </div>
+
+                  <!-- Email (Read-only) -->
+                  <div>
+                    <label
+                      for="email"
+                      class="block text-sm font-semibold text-gray-900 mb-2"
+                    >
+                      <i class="fas fa-envelope text-blue-600 mr-2"></i>Email
+                      Address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      disabled
+                      class="w-full px-4 py-3 border border-gray-300 rounded-xl bg-gray-100 text-gray-600 cursor-not-allowed"
+                      placeholder="Email address"
+                      value="demo@nwsdb.lk"
+                    />
+                    <p class="text-xs text-gray-500 mt-2">
+                      Email cannot be changed
+                    </p>
+                  </div>
+
+                  <!-- Username (Read-only) -->
+                  <div>
+                    <label
+                      for="username"
+                      class="block text-sm font-semibold text-gray-900 mb-2"
+                    >
+                      <i class="fas fa-at text-blue-600 mr-2"></i>Username
+                    </label>
+                    <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      disabled
+                      class="w-full px-4 py-3 border border-gray-300 rounded-xl bg-gray-100 text-gray-600 cursor-not-allowed"
+                      placeholder="Username"
+                      value="demo_user"
+                    />
+                    <p class="text-xs text-gray-500 mt-2">
+                      Username cannot be changed
+                    </p>
+                  </div>
+
+                  <!-- Current Password -->
+                  <div>
+                    <label
+                      for="currentPassword"
+                      class="block text-sm font-semibold text-gray-900 mb-2"
+                    >
+                      <i class="fas fa-lock text-blue-600 mr-2"></i>Current
+                      Password <span class="text-red-500">*</span>
+                    </label>
+                    <div class="relative">
+                      <input
+                        type="password"
+                        id="currentPassword"
+                        name="currentPassword"
+                        required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                        placeholder="Enter your current password"
+                      />
+                      <button
+                        type="button"
+                        onclick="togglePasswordVisibility('currentPassword')"
+                        class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors duration-300"
+                      >
+                        <i class="fas fa-eye text-lg"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- New Password -->
+                  <div>
+                    <label
+                      for="newPassword"
+                      class="block text-sm font-semibold text-gray-900 mb-2"
+                    >
+                      <i class="fas fa-key text-blue-600 mr-2"></i>New Password
+                      <span class="text-gray-400">(Optional)</span>
+                    </label>
+                    <div class="relative">
+                      <input
+                        type="password"
+                        id="newPassword"
+                        name="newPassword"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                        placeholder="Enter new password (leave blank to keep current)"
+                      />
+                      <button
+                        type="button"
+                        onclick="togglePasswordVisibility('newPassword')"
+                        class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors duration-300"
+                      >
+                        <i class="fas fa-eye text-lg"></i>
+                      </button>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2">
+                      At least 8 characters, including uppercase and numbers
+                    </p>
+                  </div>
+
+                  <!-- Confirm New Password -->
+                  <div>
+                    <label
+                      for="confirmPassword"
+                      class="block text-sm font-semibold text-gray-900 mb-2"
+                    >
+                      <i class="fas fa-check-circle text-blue-600 mr-2"></i
+                      >Confirm New Password
+                      <span class="text-gray-400">(Optional)</span>
+                    </label>
+                    <div class="relative">
+                      <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
+                        placeholder="Confirm new password"
+                      />
+                      <button
+                        type="button"
+                        onclick="togglePasswordVisibility('confirmPassword')"
+                        class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors duration-300"
+                      >
+                        <i class="fas fa-eye text-lg"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Form Buttons -->
+                  <div class="grid grid-cols-2 gap-4 pt-6">
+                    <button
+                      type="submit"
+                      class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                    >
+                      <i class="fas fa-save mr-2"></i>Save Changes
+                    </button>
+                    <button
+                      type="button"
+                      onclick="resetForm()"
+                      class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-gray-400 to-gray-500 text-white font-semibold rounded-xl hover:from-gray-500 hover:to-gray-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                    >
+                      <i class="fas fa-redo mr-2"></i>Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ============ JAVASCRIPT SECTION ============ -->
+    <script>
+      // ============ TOGGLE PASSWORD VISIBILITY ============
+      function togglePasswordVisibility(fieldId) {
+        const field = document.getElementById(fieldId);
+        const button = event.target.closest('button');
+        const icon = button.querySelector('i');
+
+        if (field.type === 'password') {
+          field.type = 'text';
+          icon.classList.remove('fa-eye');
+          icon.classList.add('fa-eye-slash');
+        } else {
+          field.type = 'password';
+          icon.classList.remove('fa-eye-slash');
+          icon.classList.add('fa-eye');
+        }
+      }
+
+      // ============ RESET FORM ============
+      function resetForm() {
+        document.getElementById('settingsForm').reset();
+        // Set back to original values
+        document.getElementById('fullName').value = 'Demo User';
+        document.getElementById('currentPassword').value = '';
+        document.getElementById('newPassword').value = '';
+        document.getElementById('confirmPassword').value = '';
+      }
+
+      // ============ FORM SUBMISSION HANDLER ============
+      document
+        .getElementById('settingsForm')
+        ?.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          // TODO: Replace with PHP backend call
+          // Get form data
+          const formData = {
+            fullName: document.getElementById('fullName').value,
+            currentPassword: document.getElementById('currentPassword').value,
+            newPassword: document.getElementById('newPassword').value,
+            confirmPassword: document.getElementById('confirmPassword').value,
+          };
+
+          alert(
+            'Settings updated successfully!\n\nFull Name: ' + formData.fullName
+          );
+
+          // Update display
+          document.getElementById('displayName').textContent =
+            formData.fullName;
+        });
+
+      // ============ LOGOUT FUNCTION ============
+      function handleLogout() {
+        if (confirm('Are you sure you want to logout?')) {
+          localStorage.removeItem('userData');
+          sessionStorage.clear();
+          window.location.href = '../Auth/login.html';
+        }
+      }
+
+      // ============ MOBILE MENU TOGGLE ============
+      function toggleMobileMenu() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('mobileOverlay');
+        const isOpen = sidebar.classList.contains('translate-x-0');
+
+        if (isOpen) {
+          sidebar.classList.remove('translate-x-0');
+          sidebar.classList.add('-translate-x-full');
+          overlay.classList.add('hidden');
+          document.body.style.overflow = '';
+        } else {
+          sidebar.classList.remove('-translate-x-full');
+          sidebar.classList.add('translate-x-0');
+          overlay.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      // ============ EVENT LISTENERS ============
+      document
+        .getElementById('mobileMenuToggle')
+        ?.addEventListener('click', toggleMobileMenu);
+      document
+        .getElementById('mobileOverlay')
+        ?.addEventListener('click', toggleMobileMenu);
+
+      document.querySelectorAll('#sidebar a').forEach((link) => {
+        link.addEventListener('click', function () {
+          if (window.innerWidth < 1024) {
+            toggleMobileMenu();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
